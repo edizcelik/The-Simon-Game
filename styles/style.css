@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	font-family: arial;
+	font-family: arial, sans-serif;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,8 +16,8 @@ body {
 }
 
 .board {
-	width: 50vmax;
-	height: 50vmax;
+	width: 45vmax;
+	height: 45vmax;
 	background: #011627;
 	border-radius: 50%;
 	position: relative;
@@ -81,21 +81,178 @@ body {
 }
 
 .center .title {
-	height: 50%;
-	width: 50%;
+	height: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0; padding: 30px 0 0;
+	margin: 0; padding: 50px 0 0;
 }
 
 .title h1 {
 	margin: 0; padding: 0;
-	font-size: 84px;
+	font-size: 74px;
 }
 
 .title small {
 	font-size: 1.4em;
 	position: relative;
 	top: -5%;
+}
+
+.board .screen {
+	width: 30%;
+	height: 70px;
+	background: #32050C;
+	color: #740b1b;
+	box-shadow: inset 0 0 5px 5px #011627;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3em;
+	margin-bottom: 20px;
+}
+
+/*switch*/
+.switch {
+	width: 80px;
+	height: 26px;
+	background: #011627;
+  	margin: 20px auto;
+  	position: relative;
+  	border-radius: 50px;
+ 	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.switch:after {
+    content: 'OFF';
+    color: #FDFFFC;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); 
+}
+.switch:before {
+    content: 'ON';
+    color: #2fae04;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); 
+}
+
+.switch label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #FDFFFC;;
+    background: linear-gradient(to top, #FDFFFC 0%, #dfe5d7 100%);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.switch input {
+	visibility: hidden;
+}
+
+.switch input:checked + label {
+	left: 43px;
+}
+
+/* controls */
+.controls {
+	width: 30%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	//display: none;
+}
+
+#start {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 2px solid #011627;
+	background: #36c705;
+	box-shadow: inset 0 0 3px 2px #2fae04,
+				0 1.5px 1px 0.75px #a6a6a6;
+	cursor: pointer;
+	outline: none;
+	transition: all 0.3s;
+	position: relative;
+}
+
+#start:active {
+	color: #35c804;
+	box-shadow: inset 0 0 3px 4px #2fae04;
+}
+#start:before {
+	content: 'START';
+	font-weight: bold;
+	color: #011627;
+	position: absolute;
+	top: 145%;
+	left: -30%;
+	font-size: 14px;
+}
+
+.strict {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.strict label{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background: #d0162b;
+	border: 2px solid #011627;
+	box-shadow: inset 0 0 3px 2px #b91327,
+				0 1.5px 1px 0.75px #a6a6a6;
+}
+
+.strict label:after {
+	content: 'STRICT';
+	position: absolute;
+	top: 145%;
+	left: -37%;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.strict label:before {
+	content: '';
+	position: absolute;
+	top: -65%;
+	left: 30%;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid #011627;
+	transition: all 0.6s;
+}
+
+.strict input {
+	visibility: hidden;
+}
+.strict input:checked + label {
+	background: #b23442;
+	box-shadow: inset 0 0 3px 2px #d0162b;
+}
+.strict input:checked + label:before {
+	background: #FF9F1C;
 }
