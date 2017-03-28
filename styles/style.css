@@ -29,6 +29,7 @@ body {
 	position: absolute;
 	z-index: 1;
 	cursor: pointer;
+	transition: all 1s;
 }
 
 .board .btn[data-index="1"] {
@@ -62,6 +63,24 @@ body {
 	border-top-right-radius: 60%;
 	border-bottom-left-radius: 100%;
 }
+
+.board .btn.shine[data-index="1"] {
+	background: #ffbf66;
+	box-shadow: 0 0 15px 5px #ffbf66;
+}
+.board .btn.shine[data-index="2"] {
+	background: #ee5d6e;
+	box-shadow: 0 0 15px 5px #ee5d6e;
+}
+.board .btn.shine[data-index="3"] {
+	background: #5ad8cc;
+	box-shadow: 0 0 15px 5px #5ad8cc;
+}
+.board .btn.shine[data-index="4"] {
+	background: #bef4c2;
+	box-shadow: 0 0 15px 5px #bef4c2;
+}
+
 
 .board .center {
 	width: 50%;
