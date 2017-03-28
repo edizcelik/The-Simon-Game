@@ -24,9 +24,12 @@ switchCheck.addEventListener("change", function() {
 		controlsDiv.style.display = "flex";
 		screenCounter.innerHTML = "--";
 	} else {
+		//clear everything
 		controlsDiv.style.display = "none";
 		screenCounter.innerHTML = "";
 		strictCheck.checked = false;
+		startBtn.classList.remove("gameOn");
+		btns.forEach(btn => btn.removeEventListener('mousedown', shine));
 	}
 });
 
@@ -40,15 +43,13 @@ strictCheck.addEventListener("change", function() {
 });
 
 startBtn.addEventListener("click", gameStart);
-btns.forEach(btn => btn.addEventListener('mousedown', shine));
-
 
 /*
  *
  * Handler Functions
  *
  */
- 
+
 function shine(e) {
 	const $this = e.target;
 	//get the index of the clicked button
@@ -69,4 +70,18 @@ function shine(e) {
 
 function gameStart() {
 	console.log("Game starts");
+
+	//gameOn class will tell us whether the game has started
+	if (!startBtn.classList.contains("gameOn")) {
+		this.classList.add("gameOn");
+
+		//enable the click event on colored buttons
+		btns.forEach(btn => btn.addEventListener('mousedown', shine));
+	}
+
+	//else, start button is clicked during the game, reset the game.
+	else {
+		this.classList.remove("gameOn");
+		btns.forEach(btn => btn.removeEventListener('mousedown', shine));
+	}
 };
