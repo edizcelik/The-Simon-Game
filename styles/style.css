@@ -189,10 +189,10 @@ body {
 /* controls */
 .controls {
 	width: 30%;
-	display: flex;
+	
 	justify-content: space-between;
 	margin-top: 20px;
-	//display: none;
+	display: none;
 }
 
 #start {
