@@ -190,23 +190,18 @@ function shine(e) {
 		game.human.push(Number(index));
 
 		//compare the human pattern
-		if (game.human.length === game.computer.length)
+		//if (game.human.length === game.computer.length)
 			compare();
 }
 
 function compare() {
 			console.log(game.human);
 		/* compare */
-			//variable to check the comparison
-			let compare = true;
-			for (let i = 0; i < game.human.length; i++) {
-				if (game.human[i] !== game.computer[i]) compare = false;
-			}
-
-			if (!compare) {
+			//check whether the latest user input matches the computer value at the same index
+			if (game.human[game.human.length - 1] !== game.computer[game.human.length - 1]) {
 				console.log("compared different!");
 
-				//if strict mode is on
+				//if strict mode is on: notify and start a new game
 				if (game.strict) {
 					console.log("error: strict mode");
 					screenCounter.innerHTML = `!!`;
@@ -214,8 +209,9 @@ function compare() {
 					setTimeout(function() {
 						screenCounter.classList.remove("fadeIn");
 						gameStart();
-					}, 2000);
+					}, 1000);
 				} else {
+					//normal mode: notify and repeat the last pattern
 					console.log("error: normal mode");
 					screenCounter.innerHTML = `!!`;
 					screenCounter.classList.add("fadeIn");
@@ -227,23 +223,20 @@ function compare() {
 							screenCounter.innerHTML = `${game.count}`;
 						}
 						showPattern();
-					}, 2000);
+					}, 1000);
 				}
 			} else {
 				console.log("Got it right!");
-
+				//check if the length of the arrays are equal
 				if (game.human.length === game.computer.length) {
+					//if count equals to 20, the game ends
 					if (game.count === 20) {
 						console.log("You rock!");
 					} else {
+						//level up
 						console.log("calling count func again");
 						count();
 					}
 				}
 			}
-		//if user got it right, add to the pattern
-
-		//if not, notify and repeat the last pattern (normal mode)
-
-		//if not, notify and start a new game (strict mode)
-}
+};

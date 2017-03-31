@@ -136,7 +136,7 @@ body {
 	color: #123fba;
 	font-weight: 900;
 	animation-name: animate;
-	animation-duration: 1s;
+	animation-duration: 0.8s;
 }
 
 @keyframes animate {
