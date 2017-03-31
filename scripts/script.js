@@ -158,7 +158,7 @@ function showPattern() {
 			if (i >= game.computer.length) {
 				clearInterval(interval);
 			}
-		}, 600);
+		}, 800);
 
 		//the user input
 		game.human = [];
@@ -190,14 +190,20 @@ function shine(e) {
 		game.human.push(Number(index));
 
 		//compare the human pattern
-		compare();
+		if (game.human.length === game.computer.length)
+			compare();
 }
 
 function compare() {
-		/* compare */
 			console.log(game.human);
+		/* compare */
+			//variable to check the comparison
+			let compare = true;
+			for (let i = 0; i < game.human.length; i++) {
+				if (game.human[i] !== game.computer[i]) compare = false;
+			}
 
-			if (game.human[game.human.length - 1] !== game.computer[game.computer.length -1]) {
+			if (!compare) {
 				console.log("compared different!");
 
 				//if strict mode is on
@@ -211,7 +217,17 @@ function compare() {
 					}, 2000);
 				} else {
 					console.log("error: normal mode");
-					showPattern();
+					screenCounter.innerHTML = `!!`;
+					screenCounter.classList.add("fadeIn");
+					setTimeout(function() {
+						screenCounter.classList.remove("fadeIn");
+						if (game.count < 10) {
+							screenCounter.innerHTML = `0${game.count}`;
+						} else {
+							screenCounter.innerHTML = `${game.count}`;
+						}
+						showPattern();
+					}, 2000);
 				}
 			} else {
 				console.log("Got it right!");
@@ -220,6 +236,7 @@ function compare() {
 					if (game.count === 20) {
 						console.log("You rock!");
 					} else {
+						console.log("calling count func again");
 						count();
 					}
 				}
