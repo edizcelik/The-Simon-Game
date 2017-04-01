@@ -87,7 +87,7 @@ function gameStart() {
 	if (!game.gameOn){
 
 		game.gameOn = true;
-
+		
 		//reset everything, game is just starting
 		gameClear();
 
@@ -185,18 +185,18 @@ function shine(e) {
 
 		//play the audio
 		const audio = audios[index];
+		audio.currentTime = 0;
 		audio.play();
 
 		game.human.push(Number(index));
 
 		//compare the human pattern
-		//if (game.human.length === game.computer.length)
-			compare();
+		compare();
 }
 
 function compare() {
 			console.log(game.human);
-		/* compare */
+
 			//check whether the latest user input matches the computer value at the same index
 			if (game.human[game.human.length - 1] !== game.computer[game.human.length - 1]) {
 				console.log("compared different!");
@@ -231,7 +231,9 @@ function compare() {
 				if (game.human.length === game.computer.length) {
 					//if count equals to 20, the game ends
 					if (game.count === 20) {
-						console.log("You rock!");
+						screenCounter.innerHTML = `
+							<span style="color: #123fba; font-size: 0.9em">WON</span>
+						`;
 					} else {
 						//level up
 						console.log("calling count func again");
