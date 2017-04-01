@@ -110,6 +110,8 @@ function gameClear() {
 };
 
 function count() {
+
+
 		game.count++;
 
 		//update the screen with the count number
@@ -117,7 +119,8 @@ function count() {
 			screenCounter.innerHTML = `0${game.count}`;
 		} else {
 			screenCounter.innerHTML = `${game.count}`;
-		}
+		}		
+
 
 		/*
 		 * Randomly choose from game.possible and
@@ -133,6 +136,9 @@ function pattern() {
 };
 
 function showPattern() {
+		btns.forEach(btn => btn.removeEventListener('click', shine));
+
+
 		//show the computer's pattern
 		let i = 0;
 
@@ -157,12 +163,11 @@ function showPattern() {
 			//clear interval 
 			if (i >= game.computer.length) {
 				clearInterval(interval);
+				//the user input
+				game.human = [];
+				user();
 			}
 		}, 800);
-
-		//the user input
-		game.human = [];
-		user();
 };
 
 function user() {
@@ -234,6 +239,11 @@ function compare() {
 						screenCounter.innerHTML = `
 							<span style="color: #123fba; font-size: 0.9em">WON</span>
 						`;
+						screenCounter.classList.add("fadeIn");
+						setTimeout(function() {
+							screenCounter.classList.remove("fadeIn");
+							gameStart();
+						}, 2000);
 					} else {
 						//level up
 						console.log("calling count func again");
